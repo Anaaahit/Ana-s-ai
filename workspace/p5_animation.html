@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>p5.js Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <script>
+        let x = 0;
+        function setup() {
+            createCanvas(400, 400);
+        }
+
+        function draw() {
+            background(220);
+            fill(100, 150, 250);
+            ellipse(x, height / 2, 50, 50);
+            x += 2;
+            if (x > width) {
+                x = 0;
+            }
+        }
+    </script>
+</body>
+</html>

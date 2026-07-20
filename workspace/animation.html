@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>setTimeout Animation</title>
+  <style>
+    body {
+      margin: 0;
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    canvas {
+      border: 2px solid #e94560;
+      border-radius: 8px;
+      background: #16213e;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas" width="500" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // --- Ball state ---
+    const ball = {
+      x: 250,
+      y: 200,
+      radius: 20,
+      dx: 4,   // horizontal speed
+      dy: 3,   // vertical speed
+      color: "#e94560",
+    };
+
+    /**
+     * Draws the ball at its current position.
+     */
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fillStyle = ball.color;
+      ctx.shadowColor = ball.color;
+      ctx.shadowBlur = 15;
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    /**
+     * Clears the canvas, updates ball position,
+     * handles wall collisions, and redraws.
+     */
+    function animate() {
+      // Clear the previous frame
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drawBall();
+
+      // Bounce off left/right walls
+      if (ball.x + ball.radius >= canvas.width || ball.x - ball.radius <= 0) {
+        ball.dx = -ball.dx;
+      }
+
+      // Bounce off top/bottom walls
+      if (ball.y + ball.radius >= canvas.height || ball.y - ball.radius <= 0) {
+        ball.dy = -ball.dy;
+      }
+
+      // Move the ball
+      ball.x += ball.dx;
+      ball.y += ball.dy;
+
+      // Schedule the next frame (~60fps = every 16ms)
+      setTimeout(animate, 16);
+    }
+
+    // Kick off the animation
+    animate();
+  </script>
+
+</body>
+</html>

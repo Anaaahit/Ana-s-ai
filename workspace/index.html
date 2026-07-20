@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRONGRID | Industrial Infrastructure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #3b82f6; }
+        body { font-family: 'Space Grotesk', sans-serif; background: #050505; color: #e5e5e5; }
+        .grid-bg { background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0); background-size: 40px 40px; }
+        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
+        .clip-path-custom { clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%); }
+    </style>
+</head>
+<body class="grid-bg min-h-screen">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 glass border-b border-white/10 px-8 py-6 flex justify-between items-center">
+        <h1 class="text-2xl font-black tracking-tighter">IRON<span class="text-blue-500">GRID</span></h1>
+        <div class="flex gap-8 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
+            <a href="#" class="hover:text-white transition">Materials</a>
+            <a href="#" class="hover:text-white transition">Engineered</a>
+            <a href="#" class="hover:text-white transition">Supply Chain</a>
+        </div>
+        <button class="bg-blue-600 px-8 py-2 text-xs font-bold hover:bg-white hover:text-black transition uppercase">Portal</button>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pt-40 pb-20 px-8">
+        <div class="max-w-6xl mx-auto">
+            <span class="text-blue-500 font-mono tracking-widest text-sm">— EST. 2024 INDUSTRIAL DATA</span>
+            <h2 class="text-8xl font-black mt-6 leading-[0.9] tracking-tight">ENGINEERED<br><span class="text-white/20">FOR THE FUTURE.</span></h2>
+            <div class="mt-12 flex gap-4">
+                <button class="bg-white text-black px-10 py-4 font-bold hover:bg-blue-500 hover:text-white transition">VIEW INVENTORY</button>
+                <button class="border border-white/20 px-10 py-4 font-bold hover:border-white transition">SPECIFICATIONS</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section -->
+    <section class="px-8 pb-32">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- Product -->
+            <div class="clip-path-custom glass p-8 group transition hover:scale-[1.02]">
+                <div class="w-12 h-12 bg-blue-600/20 rounded flex items-center justify-center mb-6 text-blue-500">01</div>
+                <h3 class="text-xl font-bold mb-2">CARBON STEEL</h3>
+                <p class="text-gray-500 text-sm mb-6">High-tensile structural integrity for heavy duty applications.</p>
+                <a href="#" class="text-blue-500 font-bold uppercase text-xs tracking-widest">Detail →</a>
+            </div>
+            
+            <div class="clip-path-custom glass p-8 group transition hover:scale-[1.02]">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center mb-6">02</div>
+                <h3 class="text-xl font-bold mb-2">POLYMER MIX</h3>
+                <p class="text-gray-500 text-sm mb-6">Advanced chemical composites for extreme environments.</p>
+                <a href="#" class="text-white font-bold uppercase text-xs tracking-widest">Detail →</a>
+            </div>
+
+            <div class="clip-path-custom glass p-8 group transition hover:scale-[1.02]">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center mb-6">03</div>
+                <h3 class="text-xl font-bold mb-2">TITANIUM CORE</h3>
+                <p class="text-gray-500 text-sm mb-6">Aerospace grade material for precision construction.</p>
+                <a href="#" class="text-white font-bold uppercase text-xs tracking-widest">Detail →</a>
+            </div>
+
+            <div class="clip-path-custom glass p-8 group transition hover:scale-[1.02]">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center mb-6">04</div>
+                <h3 class="text-xl font-bold mb-2">REINFORCED</h3>
+                <p class="text-gray-500 text-sm mb-6">Optimized concrete aggregates for stability.</p>
+                <a href="#" class="text-white font-bold uppercase text-xs tracking-widest">Detail →</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

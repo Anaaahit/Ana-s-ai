@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout Animation</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        background: #0f172a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: "Segoe UI", sans-serif;
+        color: #f1f5f9;
+        gap: 2rem;
+      }
+
+      h1 { font-size: 1.4rem; color: #94a3b8; letter-spacing: 1px; }
+
+      /* ── The box that animates ── */
+      #box {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        background: #6366f1;
+        box-shadow: 0 0 30px #6366f188;
+        transition: all 0.5s ease;   /* smooth visual transitions */
+      }
+
+      /* ── Status label ── */
+      #status {
+        font-size: 1rem;
+        color: #818cf8;
+        min-height: 1.5rem;
+        letter-spacing: 0.5px;
+      }
+
+      /* ── Restart button ── */
+      #restartBtn {
+        padding: 0.6rem 1.8rem;
+        background: #4f46e5;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        cursor: pointer;
+        opacity: 0;                    /* hidden until animation ends */
+        pointer-events: none;
+        transition: opacity 0.4s ease, background 0.2s;
+      }
+
+      #restartBtn:hover { background: #3730a3; }
+    </style>
+  </head>
+  <body>
+
+    <h1>⏱️ setTimeout Animation</h1>
+    <div id="box"></div>
+    <p id="status">Ready...</p>
+    <button id="restartBtn" onclick="startAnimation()">🔁 Restart</button>
+
+    <script>
+      const box        = document.getElementById("box");
+      const status     = document.getElementById("status");
+      const restartBtn = document.getElementById("restartBtn");
+
+      // Keeps track of all scheduled timeouts so we can cancel on restart
+      let timers = [];
+
+      function schedule(fn, delay) {
+        timers.push(setTimeout(fn, delay));
+      }
+
+      function resetBox() {
+        // Cancel any running timers
+        timers.forEach(clearTimeout);
+        timers = [];
+
+        // Reset box to original state
+        box.style.transform    = "";
+        box.style.background   = "#6366f1";
+        box.style.borderRadius = "16px";
+        box.style.boxShadow    = "0 0 30px #6366f188";
+        box.style.opacity      = "1";
+
+        // Hide restart button
+        restartBtn.style.opacity      = "0";
+        restartBtn.style.pointerEvents = "none";
+      }
+
+      function startAnimation() {
+        resetBox();
+        status.textContent = "🟣 Step 1 — Starting...";
+
+        // Step 1 (0.5s): slide right
+        schedule(() => {
+          status.textContent = "➡️  Step 2 — Moving right...";
+          box.style.transform = "translateX(120px)";
+        }, 500);
+
+        // Step 2 (1.3s): grow + turn pink
+        schedule(() => {
+          status.textContent = "🔺 Step 3 — Growing...";
+          box.style.transform  = "translateX(120px) scale(1.5)";
+          box.style.background = "#ec4899";
+          box.style.boxShadow  = "0 0 40px #ec489988";
+        }, 1300);
+
+        // Step 3 (2.2s): spin + turn yellow
+        schedule(() => {
+          status.textContent = "🔄 Step 4 — Spinning...";
+          box.style.transform  = "translateX(120px) scale(1.5) rotate(180deg)";
+          box.style.background = "#facc15";
+          box.style.boxShadow  = "0 0 40px #facc1588";
+        }, 2200);
+
+        // Step 4 (3.1s): become a circle + turn green
+        schedule(() => {
+          status.textContent   = "🟢 Step 5 — Going round...";
+          box.style.borderRadius = "50%";
+          box.style.background   = "#22c55e";
+          box.style.boxShadow    = "0 0 40px #22c55e88";
+        }, 3100);
+
+        // Step 5 (4.0s): shrink & fade out
+        schedule(() => {
+          status.textContent  = "💨 Step 6 — Fading out...";
+          box.style.transform = "translateX(120px) scale(0)";
+          box.style.opacity   = "0";
+        }, 4000);
+
+        // Done (4.8s): show restart button
+        schedule(() => {
+          status.textContent                = "✅ Done! Animation complete.";
+          restartBtn.style.opacity          = "1";
+          restartBtn.style.pointerEvents    = "auto";
+        }, 4800);
+      }
+
+      // Kick off on page load
+      startAnimation();
+    </script>
+  </body>
+</html>

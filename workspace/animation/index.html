@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>setTimeout Animation</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      gap: 20px;
+      font-family: sans-serif;
+      color: white;
+    }
+
+    #box {
+      width: 80px;
+      height: 80px;
+      background: #6c63ff;
+      border-radius: 12px;
+      transition: transform 0.4s ease, background 0.4s ease, border-radius 0.4s ease;
+    }
+
+    #status {
+      font-size: 1rem;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box"></div>
+  <p id="status">Waiting...</p>
+
+  <script>
+    const box = document.getElementById('box');
+    const status = document.getElementById('status');
+
+    // Step 1: scale up
+    setTimeout(() => {
+      box.style.transform = 'scale(1.5)';
+      status.textContent = 'Step 1: Scale up';
+    }, 500);
+
+    // Step 2: rotate + color change
+    setTimeout(() => {
+      box.style.transform = 'scale(1.5) rotate(45deg)';
+      box.style.background = '#ff6584';
+      status.textContent = 'Step 2: Rotate + recolor';
+    }, 1200);
+
+    // Step 3: make it a circle
+    setTimeout(() => {
+      box.style.borderRadius = '50%';
+      box.style.background = '#43e97b';
+      status.textContent = 'Step 3: Morph to circle';
+    }, 2000);
+
+    // Step 4: shrink back
+    setTimeout(() => {
+      box.style.transform = 'scale(1) rotate(0deg)';
+      box.style.background = '#6c63ff';
+      box.style.borderRadius = '12px';
+      status.textContent = 'Step 4: Back to start';
+    }, 2800);
+
+    // Step 5: loop it
+    setTimeout(() => {
+      status.textContent = 'Done! Refresh to replay 🎉';
+    }, 3600);
+  </script>
+
+</body>
+</html>

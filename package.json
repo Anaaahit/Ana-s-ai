@@ -1,0 +1,27 @@
+{
+  "name": "tumo-day-05",
+  "version": "1.0.0",
+  "description": "Day 5: Memory, Context & Planning + Complete Agent Template",
+  "scripts": {
+    "memory": "tsx src/01-memory.ts",
+    "planning": "tsx src/02-planning.ts",
+    "agent": "tsx src/agent.ts",
+    "server": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^2.12.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}
